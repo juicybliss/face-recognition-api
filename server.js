@@ -5,29 +5,8 @@ const cors = require('cors');
 
 const app = express();
 
-const database = {
-    users: [
-        {
-            id: '123',
-            name: 'Jon',
-            email: 'jon@gmail.com',
-            password: 'cookies',
-            entries: 0,
-            joined: new Date()
-        },
-        {
-            id: '124',
-            name: 'Sally',
-            email: 'sally@gmail.com',
-            password: 'bananas',
-            entries: 0,
-            joined: new Date()
-        }
-    ]
-}
-
-app.use(bodyParser.json()); 
 app.use(cors())
+app.use(bodyParser.json()); 
 
 
 app.get('/', (req, res) => {
@@ -52,7 +31,6 @@ app.post('/register', (req, res) => {
         id: '125',
         name: name,
         email: email,
-        password: password,
         entries: 0,
         joined: new Date()   
     })
