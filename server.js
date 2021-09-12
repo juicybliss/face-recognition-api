@@ -19,40 +19,21 @@ const db = knex({
     }
   });
 
-db.select('*').from('users').then(data => {
-    console.log(data);
-});
-
 const app = express();
 
 app.use(cors())
 app.use(bodyParser.json()); 
 
+app.get('/', (req, res) => {res.send('Success!')})
 
-app.get('/', (req, res) => {
-    res.send('Success!')
-})
+app.post('/signin', signin.handleSignin(db, bcrypt))
 
-app.post('/signin', (req, res) => {signin.handleSignin(req, res, db, bcrypt)})
+app.post('/register', register.handleRegister(db, bcrypt))
 
-app.post('/register', (req, res) => {register.handleRegister(req, res, db, bcrypt)})
+app.get('/profile/:id', profile.handleProfileGet(db))
 
-app.get('/profile/:id', (req, res) => { profile.handleProfileGrt(req, res, db)})
+app.put('/image', image.handleImage(db))
 
-app.put('/image', (req, res) => { image.handleImage(req, res, db)})
-
-
-// bcrypt.hash("bacon", null, null, function(err, hash) {
-//     // Store hash in your password DB.
-// });
-
-// // Load hash from your password DB.
-// bcrypt.compare("bacon", hash, function(err, res) {
-//     // res == true
-// });
-// bcrypt.compare("veggies", hash, function(err, res) {
-//     // res = false
-// });
 
 app.listen(3000, () => {
     console.log('app is running on port 3000');
