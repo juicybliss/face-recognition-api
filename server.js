@@ -15,8 +15,8 @@ const db = knex({
     host: "127.0.0.1",
     user: "juicybliss",
     password: "",
-    database: "smart-brain",
-  },
+    database: "smart-brain"
+  }
 });
 
 const app = express();

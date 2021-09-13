@@ -8,7 +8,7 @@ const handleRegister = (req, res, db, bcrypt) => {
     trx
       .insert({
         hash: hash,
-        email: email,
+        email: email
       })
       .into("login")
       .returning("email")
@@ -18,7 +18,7 @@ const handleRegister = (req, res, db, bcrypt) => {
           .insert({
             email: loginEmail[0],
             name: name,
-            joined: new Date(),
+            joined: new Date()
           })
           .then((user) => {
             res.json(user[0]);
