@@ -32,8 +32,8 @@ const db = knex({
   app.put('/image', (req, res) => { image.handleImage(req, res, db)})
   app.post('/imageurl', (req, res) => { image.handleApiCall(req, res)})
   
-  app.listen(process.evn.PORT, ()=> {
-    console.log(`app is running on port ${process.evn.PORT}`);
+  app.listen(process.env.PORT, ()=> {
+    console.log(`app is running on port ${process.env.PORT}`);
   })
 
 /*
