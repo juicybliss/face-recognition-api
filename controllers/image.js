@@ -1,4 +1,4 @@
-const handleImage = (req, res, db) => {
+const handleImage = (db) =>(req, res) => {
   const { id } = req.body;
 db('users').where('id', '=', id)
 .increment('entries', 1)
@@ -10,5 +10,5 @@ db('users').where('id', '=', id)
 }
 
 module.exports = {
-  handleImage: handleImage //can just use handleImage with ES6 but want to be backwards compatible.
+  handleImage
 }
